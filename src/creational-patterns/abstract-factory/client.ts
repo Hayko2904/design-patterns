@@ -1,6 +1,6 @@
 import {FactoryInterface} from "./factory-interface";
 
-export class Client {
+export class AbstractClient {
     private factory: FactoryInterface;
 
     constructor(factory: FactoryInterface) {
