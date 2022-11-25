@@ -7,6 +7,9 @@ import {AppFirst} from "./creational-patterns/abstract-factory/app-first";
 import {AppSecond} from "./creational-patterns/abstract-factory/app-second";
 import {BuilderClient} from "./creational-patterns/builder/client";
 import {ProductBuilder} from "./creational-patterns/builder/product-builder";
+import { PrototypeClient } from './creational-patterns/prototype/client';
+import { Persons } from './creational-patterns/prototype/persons';
+import { Prototype } from './creational-patterns/prototype/prototype-interface';
 const app = express();
 const port = 3000;
 
@@ -31,8 +34,15 @@ app.get('/builder', (req, res) => {
   res.send(builder.getProduct())
 })
 
+app.get('/prototype', (req, res) => {
+  const personGroupFirst: Prototype = new Persons();
+  
+  const personGroupSecond: Prototype = new PrototypeClient().runCode(personGroupFirst);
+
+  res.send(JSON.stringify(personGroupFirst) + '<br />' + JSON.stringify(personGroupSecond)
+})
+
 
 app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
 });
-
