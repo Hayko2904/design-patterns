@@ -39,7 +39,7 @@ app.get('/prototype', (req, res) => {
   
   const personGroupSecond: Prototype = new PrototypeClient().runCode(personGroupFirst);
 
-  res.send(JSON.stringify(personGroupFirst) + '<br />' + JSON.stringify(personGroupSecond)
+  res.send(JSON.stringify(personGroupFirst) + '<br />' + JSON.stringify(personGroupSecond));
 })
 
 
